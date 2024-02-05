@@ -3,7 +3,7 @@ data "google_client_config" "default" {}
 provider "kubernetes" {
   host = "https://${module.gke.endpoint}"
   token = data.google_client_config.default.access_token
-  cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
+  #cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
 }
 
 module "gke" {
@@ -15,14 +15,14 @@ module "gke" {
   version = "30.0.0"
   # variables 
   project_id = var.project_id
-  name = "sorcero-gke-cluster${var.cluster_name_suffix}"
+  name = "gke-cluster-01"
   release_channel = "REGULAR"
   region = var.default_region
   zones = var.zones
   network = var.network
   subnetwork = var.default_region
-  ip_range_pods = "${var.default_region}-01-pods"
-  ip_range_services = "${var.default_region}-01-services"
+  ip_range_pods = "us-east1-gke-01-pods"
+  ip_range_services = "$us-east1-gke-01-services"
   create_service_account = false
   remove_default_node_pool = true
   disable_legacy_metadata_endpoints = false
