@@ -56,6 +56,12 @@ module "gke" {
   remove_default_node_pool = true
   disable_legacy_metadata_endpoints = false
   cluster_autoscaling = var.cluster_autoscaling
+  # Disable deletion protection 
+  update {
+    enabled = true
+    deletion_protection = false
+  }
+  #deletion_protection = false
   # authenticator_security_group = "gke-security-group@company.com"
 
   node_pools = [
