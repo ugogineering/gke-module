@@ -19,10 +19,10 @@ module "gke" {
   release_channel = "REGULAR"
   region = var.default_region
   zones = var.zones
-  network = var.network
-  subnetwork = var.default_region
-  ip_range_pods = "us-east1-gke-01-pods"
-  ip_range_services = "us-east1-gke-01-services"
+  network = "default"
+  subnetwork = "default"
+  ip_range_pods = "default-gke-01-pods"
+  ip_range_services = "default-gke-01-services"
   create_service_account = false
   remove_default_node_pool = true
   disable_legacy_metadata_endpoints = false
