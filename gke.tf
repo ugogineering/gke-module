@@ -72,7 +72,7 @@ module "gke" {
         auto_repair = true
         auto_upgrade = true
         node_metadata = "GKE_METADATA"
-        pod_range = "gke-pod-range-dkdkddk"
+        pod_range = var.ip_range_pods_name
         enable_private_nodes = true 
     },
   ]
