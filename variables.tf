@@ -1,20 +1,36 @@
-variable "default_region" {
-    type = string
-    default = "us-east1"  #
-}
-variable "name" {
-    description = "Cluster name"
-    type = string
-    default = "my-cluster" #
-
-}
-
 variable "project_id" {
-    description = "Project ID in which cluster is created"
-    type = string
-    default = "myterraformpractice" #
+  description = "The project ID to host the cluster in"
 }
 
+variable "cluster_name" {
+  description = "The name for the GKE cluster"
+  default     = "gke-on-vpc-cluster"
+}
+
+variable "region" {
+  description = "The region to host the cluster in"
+  default     = "us-east1"
+}
+
+variable "network" {
+  description = "The VPC network created to host the cluster in"
+  default     = "gke-network"
+}
+
+variable "subnetwork" {
+  description = "The subnetwork created to host the cluster in"
+  default     = "gke-subnet"
+}
+
+variable "ip_range_pods_name" {
+  description = "The secondary ip range to use for pods"
+  default     = "ip-range-pods"
+}
+
+variable "ip_range_services_name" {
+  description = "The secondary ip range to use for services"
+  default     = "ip-range-svc"
+}
 variable "cluster_name_suffix" {
     description = "A suffix to append to the default cluster name"
     default = "ter-01" #
@@ -24,16 +40,6 @@ variable "zones" {
     type = list(string)
     description = "The zone to host the cluster in (required in zonal cluster)"
     default = ["us-east1-b", "us-east1-c", "us-east1-d"]
-}
-
-variable "network" {
-    description = "The VPC network to host the cluster in"
-    default = "default"
-}
-
-variable "subnetwork" {
-    description = "The VPC subnetwork to host the cluster in"
-    default = "default"
 }
 
 variable "cluster_autoscaling" {
