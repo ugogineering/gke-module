@@ -20,9 +20,9 @@ module "gke" {
   region = var.default_region
   zones = var.zones
   network = var.network
-  subnetwork = var.subnetwork
-  ip_range_pods = var.ip_range_pods
-  ip_range_services = var.ip_range_services
+  subnetwork = var.default_region
+  ip_range_pods = "${var.default_region}-01-pods"
+  ip_range_services = "${var.default_region}-01-services"
   create_service_account = false
   remove_default_node_pool = true
   disable_legacy_metadata_endpoints = false
