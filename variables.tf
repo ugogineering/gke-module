@@ -36,14 +36,6 @@ variable "subnetwork" {
     default = "default"
 }
 
-variable "ip_range_pods" {
-    description = "The secondary ...VPC network to host the cluster in"
-}
-
-variable "ip_range_services" {
-    description = "The secon...." ##
-}
-
 variable "cluster_autoscaling" {
     type = object( {
         enabled = bool
