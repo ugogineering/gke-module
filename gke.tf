@@ -3,7 +3,7 @@ data "google_client_config" "default" {}
 provider "kubernetes" {
   host = "https://${module.gke.endpoint}"
   token = data.google_client_config.default.access_token
-  cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
+  cluster_ca_certificate = base64decode(module.gke.ca_certificate)
 }
 
 module "gcp-network" {
@@ -46,10 +46,10 @@ module "gke" {
   project_id = var.project_id
   name = var.cluster_name
   release_channel = "REGULAR"
-  region = var.default_region
+  region = var.region
   zones = var.zones
   network = module.gcp-network.network_name
-  subnetwork = module.gcp-network.network_names[0]
+  subnetwork = module.gcp-network.subnets_names[0]
   ip_range_pods = var.ip_range_pods_name
   ip_range_services = var.ip_range_services_name
   create_service_account = false

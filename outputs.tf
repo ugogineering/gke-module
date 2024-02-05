@@ -12,7 +12,7 @@ output "client_token" {
 
 output "ca_certificate" {
   description = "The cluster ca certificate (base64 encoded)"
-  value       = module.gke.cluster_ca_certificate
+  value       = module.gke.ca_certificate
 }
 
 output "service_account" {
